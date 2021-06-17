@@ -5,6 +5,7 @@ const op = db.Sequelize.Op
 
 module.exports = {
     login: (req, res) => {
+        return res.send(req.body)
         return res.render("login")
         /*if(req.session.Usuario === undefined){
             return res.redirect('/login');
@@ -17,11 +18,17 @@ module.exports = {
             where: [{ email : req.body.email}]
         })
         .then(usuario =>{
-            console.log(usuario)
+            console.log(usuario + '--------------')
             if(usuario == null){
                 return res.send('Usuario o clave inválida')
             }else{
                 if(bcryptjs.compareSync(req.body.password, usuario.password)){
+                    //guardar el usuario  que se esta logeando
+                    req.session.user = usuario
+                    //activando el guardado de cookies osea el recuerdame
+                    if (req.body.recordarme) {
+                        res.cookie('userId',usuario.Id, {maxAge : 1000 * 60 *60*24 })
+                    }
                     return res.redirect('/')
                 }else{
                     return res.send('Usuario o clave inválida');

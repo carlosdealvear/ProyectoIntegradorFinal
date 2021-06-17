@@ -4,9 +4,37 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+app.use(session({
+  secret:'mensaje secreto',
+  resave: false,
+  saveUninitialized: true
+}))
+//activar el uso de las cookies
+
+app.use(cookieParser)
+
+//debo cerear una funcion middleware si el ususario pudo recordarse en la vista del login
+app.use(function(req,res,next){
+    if (req.session.user === undefined && req.cookies.userId != undefined ) {
+      
+    }
+})
+
+
+ //creando la funcion de middleware
+app.use(function(req,res,next){
+  Console.log(req.session.user + '----------------- ')
+  if (req.session.user !=undefined ) {
+    res.locals.user = req.session.user;
+  }
+  next();
+})
+ 
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var productRouter = require("./routes/product")
+var productRouter = require("./routes/product");
+const { Console } = require('console');
 var app = express();            //variable app con info de express
 
 // view engine setup
@@ -22,6 +50,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use("/producto", productRouter);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
