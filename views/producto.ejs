@@ -1,0 +1,85 @@
+
+	<!-- Header -->
+	
+	<!-- /Header -->
+	<%- include("./partials/header") %>
+	<!-- product detail -->
+	<div class="container products-wrapper">
+		<div class="d-flex align-items-center">
+			<h2 class="products-title">Nombre del producto</h2> 
+			<p class="product-detail-description">
+				<a href="product-add.html">Editar</a>
+			</p>
+		</div>
+		<div class="product-detail">
+			<div class="row">
+				<article class="col-12 col-lg-8 product-detail-info">
+					<img src="<%= miProducto.url %>" alt="" class="product-detail-img">
+					<h1 class="product-detail-description"><%= miProducto.nombre %></h1>
+					<h2 class="product-detail-description">$ <%= miProducto.precio %></h2>
+					<p class="product-detail-description">
+						<%= miProducto.descripcion %></p>
+				</article>
+				<div class="col-12 col-lg-4">
+					<section class="comments">
+						<article>
+							<img src="https://www.grandespymes.com.ar/wp-content/uploads/2021/02/elon-musk.jpg" alt="">
+							<div class="data">
+								<p class="user">
+								<strong> <a class="comentario" href="http://localhost:3000/perfil"> elon_kpo_cabj </a> </strong>
+								 Excelente estado. Muy buena la atención.  </p>
+							</div>
+						</article>
+						<article>
+							<img src="https://pbs.twimg.com/profile_images/3123296673/f6a685a65ce2a1b5bfdd45108b714718_400x400.jpeg" alt="">
+							<div class="data">
+								<p class="user">
+									<strong> <a class="comentario" href=""> elmaestruli </a> </strong>
+									No confien en esta pagina, son unos estafadores.</p>
+							</div>
+						</article>
+						<article>
+							<img src="https://images.pagina12.com.ar/styles/focal_content_1200x1050/public/2021-04/154578-samid_0.jpg?itok=AtPvAXPr" alt="">
+							<div class="data">
+								<p class="user">
+									<strong> <a class="comentario" href="profile.html"> albertosamid3 </a> </strong>
+									Siempre que compre en este lugar tuve problemas.
+									</p>
+							</div>
+						</article>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+
+					</section>
+					<form class="form" action="" method="POST">
+						<input class="form-input" type="text" value="" placeholder="Agregar comentario">
+						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
+					</form>
+					<hr>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /product detail -->
+
+	<!-- footer -->
+	<%- include("./partials/footer") %>
+	<!-- /footer -->
+
+</body>	
+</html>
