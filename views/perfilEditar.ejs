@@ -1,0 +1,69 @@
+	
+	<% if(usuarioLogueado != null){ %>
+
+		<%-include("./partials/headerLogueado") %>
+	
+		<% } else { %>
+	
+		<%-include("./partials/header")%>
+		
+		<%}%>
+	<!-- /Header -->
+
+	<!-- Novedades -->
+	<section class="row">
+        <article class="col-12 col-md-6 m-auto">
+            <h1 class="text-center pt-1">Editar Perfil</h1>
+            <form action="/perfil/edit" method="POST">
+				<div class="mb-3">
+					<label for="idUsuario" class="form-label">ID del Usuario</label>
+					<input type="text" size="32" value="<%- usuario.id %>" name="idUsuario" id="idUsuario"/>
+				  </div>
+                <div class="mb-3">
+                  <label for="nombre" class="form-label">Nombre</label>
+                  <input type="text" class="form-control" id="nombre" name="nombre" >
+                </div>
+				<div class="mb-3">
+					<label for="apellido" class="form-label">Apellido</label>
+					<input type="text" class="form-control" id="apellido" name="apellido" >
+				  </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">E-mail</label>
+                    <input type="email" class="form-control" id="email" name="email" >
+                </div>
+				<div class="mb-3">
+                    <label for="telefono" class="form-label">Numero de telefono</label>
+                    <input type="text" class="form-control" id="telefono" name="telefono" >
+                </div>
+				<div class="mb-3">
+                    <label for="fecha_de_nacimiento" class="form-label">Fecha de Nacimiento</label>
+                    <input type="date" class="form-control" id="fecha_de_nacimiento" name="fecha_de_nacimiento" >
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                </div>  
+                <!--<div class="mb-3">
+                    <label for="confirmarPassword" class="form-label">Confirmar Contraseña</label>
+                    <input type="password" class="form-control" id="rectificarPassword" name="rectificarPassword" >
+                </div>   -->             
+                <div>
+                    <button type="submit" class="btn btn-primary">Editar Perfil</button>
+                </div>
+              </form>            
+        </article>
+			<!-- Show the "ultimos" products 
+			<h2 class="col-12"> <i>///////////////////////////////////////// <br> Acá va el formulario de edición de datos del perfil de usuario. <br>
+			Debe cumplir con los puntos de la consigna y ser coherente con la tabla de la base de datos deñ usuario<br>
+			Eliminen estás líneas y coloquen el formulario. <br>
+			Recuerden todo lo que necesita tanto la etiqueta form como los campos input para operar correctamtente</i> <br>
+			////////////////
+			</h2>-->
+
+
+	<!-- footer -->
+	<%- include("./partials/footer") %>
+	<!-- /footer -->
+</body>
+
+</html>

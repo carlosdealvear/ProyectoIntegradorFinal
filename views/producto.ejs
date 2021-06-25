@@ -1,0 +1,87 @@
+
+	<!-- Header -->
+	
+	<!-- /Header -->
+	<% if(usuarioLogueado != null){ %>
+
+		<%-include("./partials/headerLogueado") %>
+	
+		<% } else { %>
+	
+		<%-include("./partials/header")%>
+		
+		<%}%>
+	<!-- /Header -->
+	<!-- product detail -->
+	<div class="container products-wrapper">
+		<div class="d-flex align-items-center">
+			<h2 class="products-title">Nombre del producto</h2> 
+			<p class="product-detail-description">
+				<a href="http://localhost:3000/producto/editar/<%= miProducto.id %>">Editar</a>
+			</p>
+		</div>
+		<div class="product-detail">
+			<div class="row">
+				<article class="col-12 col-lg-8 product-detail-info">
+					<img src="<%= miProducto.url %>" alt="" class="product-detail-img">
+					<h1 class="product-detail-description">Nombre: <%= miProducto.nombre %></h1>
+					<h2 class="product-detail-description">Precio: $ <%= miProducto.precio %></h2>
+					<p class="product-detail-description">
+							Categoria: <%= miProducto.categorias.nombre %></p>
+					<p class="product-detail-description">
+						Descripción: <%= miProducto.descripcion %></p>
+					<p class="product-detail-description">Creador:
+						<a style="color:#000000 " href="http://localhost:3000/perfil/<%= miProducto.usuario_id %>"> <%= miProducto.usuarios.nombre %> <%= miProducto.usuarios.apellido %></a> </p>
+						
+					
+				</article>
+				<div class="col-12 col-lg-4">
+					<section class="comments">
+						<% for (let i = 0; i < miProducto.comentarios.length; i++) { %>
+							
+										
+						<article>
+							<img src="https://www.grandespymes.com.ar/wp-content/uploads/2021/02/elon-musk.jpg" alt="">
+							<div class="data">
+								<p class="user">
+								<strong> <a class="comentario" href="http://localhost:3000/perfil/<%= miProducto.comentarios[i].usuario_id %>"><%= miProducto.comentarios[i].usuarios.nombre %> <%= miProducto.comentarios[i].usuarios.apellido %></a> </strong>
+								<%= miProducto.comentarios[i].texto_comentario %></p>
+							</div>
+						</article>
+						<% } %>	
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+
+					</section>
+					<form class="form" action="" method="POST">
+						<input class="form-input" type="text" value="" placeholder="Agregar comentario">
+						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
+					</form>
+					<hr>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /product detail -->
+
+	<!-- footer -->
+	<%- include("./partials/footer") %>
+	<!-- /footer -->
+
+</body>	
+</html>

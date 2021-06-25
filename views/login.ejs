@@ -1,0 +1,50 @@
+
+	<!-- Header -->
+	<% if(usuarioLogueado != null){ %>
+
+		<%-include("./partials/headerLogueado") %>
+	
+		<% } else { %>
+	
+		<%-include("./partials/header")%>
+		
+		<%}%>
+	<!-- /Header -->
+
+	<!-- Novedades -->
+	<section class="row">
+		<article class="col-12 col-md-6 m-auto">
+			<h1 class="text-center pt-1">Iniciar Sessión</h1>
+			<form action="/users/ingresar" method="POST">
+				<div class="mb-3">
+					<label for="email" class="form-label">Correo Electronico</label>
+					<input type="email" class="form-control" id="email" name="email" required>
+				</div>
+				<div class="mb-3">
+					<label for="password" class="form-label">Contraseña</label>
+					<input type="password" class="form-control" id="password" name="password" required>
+				</div>  
+				<div class="mb-3 form-check">
+					<input type="checkbox" class="form-check-input" id="recordarme" name="recordarme">
+					<label class="form-check-label" for="recordarme">Recordarme</label>
+				  </div>
+				<div>
+					<button type="submit" class="btn btn-primary">Ingresar</button>
+				</div>
+			  </form>            
+		</article>
+	</section>
+			<!-- FORMULARIO
+			<h2 class="col-12"> <i>///////////////////////////////////////// <br> Acá va el formulario de login. <br>
+			Debe cumplir con los puntos de la consigna y ser coherente con la tabla de la base de datos <br>
+			Eliminen estás líneas y coloquen el formulario. <br>
+			Recuerden todo lo que necesita tanto la etiqueta form como los campos input para operar correctamtente</i> <br>
+			////////////////
+			</h2>-->
+		
+	<!-- footer -->
+	<%- include("./partials/footer") %>
+	<!-- /footer -->
+</body>
+
+</html>
