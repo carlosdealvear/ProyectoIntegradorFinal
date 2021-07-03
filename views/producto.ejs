@@ -16,9 +16,20 @@
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
 			<h2 class="products-title">Nombre del producto</h2> 
+			<% if(usuarioLogueado != null){ %>
+
+				<% if(miProducto.usuario_id === locals.usuarioLogueado.id){%>
 			<p class="product-detail-description">
 				<a href="http://localhost:3000/producto/editar/<%= miProducto.id %>">Editar</a>
 			</p>
+			<% } %>
+			<% if(miProducto.usuario_id === locals.usuarioLogueado.id){%>
+				<form action="http://localhost:3000/producto/borrar/<%= miProducto.id %>" method="POST">
+					<button id="remember2" type="submit" class="btn btn-primary">Borrar</button>
+				</form>
+			<% } %>
+			<% } %>
+			
 		</div>
 		<div class="product-detail">
 			<div class="row">
@@ -49,29 +60,26 @@
 							</div>
 						</article>
 						<% } %>	
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
 
 					</section>
-					<form class="form" action="" method="POST">
-						<input class="form-input" type="text" value="" placeholder="Agregar comentario">
+					<% if(usuarioLogueado != null){ %>
+
+						<form class="form" action="http://localhost:3000/producto/comentario " method="POST">
+							<input class="form-input" type="text" value="" name="comentario" placeholder="Agregar comentario">
+							<input class="form-input" type="hidden" value="<%= locals.usuarioLogueado.id%>" name="usuario" >
+							<input class="form-input" type="hidden" value="<%= idProducto %>" name="producto" >
+							<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
+						</form>
+					
+						<% } else { %>
+					
+						<form class="form" action="http://localhost:3000/users/login" method="GET">
+						<input class="form-input" type="text" value=""  placeholder="Agregar comentario">
 						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
 					</form>
+						
+						<%}%>
+					
 					<hr>
 				</div>
 			</div>

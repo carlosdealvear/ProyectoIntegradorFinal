@@ -19,69 +19,42 @@ module.exports = {
         })
 
     },
-
-    /*login: (req, res) => {
-        res.render("login")
-    },
-    ingresar : (req,res) =>{
-        db.Usuario.findOne({
-            where: [{ email : req.body.email}]
-        })
-        .then(usuario =>{
-            console.log(usuario)
-            if(usuario == null){
-                return res.send('Usuario o clave inválida')
-            }else{
-                if(bcryptjs.compareSync(req.body.password, usuario.password)){
-                    return res.redirect('/')
-                    
-                }else{
-                    return res.send('Usuario o clave inválida');
-                }
-            }
-        })
-
-    },
-
-    register: (req, res) => {
-
-        return res.render("register")
-    },
-    
-    store: (req, res) => {
-
-            db.Usuario.create({
-                nombre : req.body.nombre,
-                apellido : req.body.apellido,
-                email : req.body.email,
-                fecha_de_nacimiento: req.body.fecha_de_nacimiento,
-                telefono: req.body.telefono,
-                password : bcryptjs.hashSync(req.body.password, 10)
+    search : (req,res) =>{
+        let search = req.query.search;
+        if(search === ''){
+            db.Producto.findAll()
+            .then(respuesta =>{
+                return res.render('index', {respuesta})
             })
-            .then(()=>{
-                return res.redirect('/');
-            })     
-            .catch(error => res.render('error',{error}))
-        },
+            .catch(error => console.log(error))
+        }else{
+            db.Producto.findAll({
+                where: [
+                    {
+                        nombre : {[op.like]: '%'+ search+'%'}
+                    }
+                ]
+            })
+            .then(productos =>{
+                return res.render('searchResults', {productos})
+            })
+            .catch(error => console.log(error))
+        }
 
-        */
+    },
+
     
 
     perfil: (req, res) => {
 
         db.Usuario.findByPk(req.params.id,{
             include: [
-                //{association: "categorias"},
                 {association: "productos"},
-                //{association: "comentarios"}
                 ]                
         })
         .then(usuario =>{
-            //return res.send(miProducto)
             //console.log(miProducto+"------")
             return res.render("perfil", {usuario});
-            //return res.send(usuario)
-            //return res.render('producto',{producto})
         })
         .catch(error => console.log(error+"*****"))
     },

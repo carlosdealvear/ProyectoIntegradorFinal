@@ -11,5 +11,6 @@ router.get("/perfil/editar/:id", indexController.editar)
 
 router.post("/perfil/edit", indexController.edit)
 
+router.get('/search', indexController.search);
 
 module.exports = router;

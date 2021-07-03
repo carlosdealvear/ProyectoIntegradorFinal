@@ -5,12 +5,6 @@ const op = db.Sequelize.Op
 
 module.exports = {
     login: (req, res) => {
-        //return res.send(req.body)
-        //if(req.session.usuarioLogueado === undefined){
-        //    return res.redirect('/login');
-        //}else{
-        //    return res.redirect('/');
-        //}
         return res.render("login")
         
     },
@@ -40,11 +34,6 @@ module.exports = {
     },
 
     register: (req, res) => {
-        //if(req.session.usuarioLogueado === undefined){
-        //    return res.redirect('/register');
-        //}else{
-        //    return res.redirect('/');
-        //}
         return res.render("register")
     },
     
@@ -52,6 +41,7 @@ module.exports = {
 
             db.Usuario.create({
                 nombre : req.body.nombre,
+                img_name:req.file ? req.file .filename : "/images/users/foto-incognito.jpg" ,
                 apellido : req.body.apellido,
                 email : req.body.email,
                 fecha_de_nacimiento: req.body.fecha_de_nacimiento,
@@ -63,9 +53,6 @@ module.exports = {
                 
             })     
             .catch(error => console.log(error));
-        //else{
-            //return res.render('error', {error});
-        //}
 
     },
     logout: (req,res) =>{

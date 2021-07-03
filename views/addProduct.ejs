@@ -14,14 +14,18 @@
 	<!-- Novedades -->
 	<section class="row">
         <article class="col-12 col-md-6 m-auto">
-            <h1 class="text-center pt-1">CREAR PRODUCTO</h1>
-            <form action="/producto/store" method="POST">
+            <h1 id="titulo" class="text-center pt-1">CREAR PRODUCTO</h1>
+            <form id="nuevo" action="/producto/store" method="POST">
+                <div class="mb-3">
+                    <label for="usuario_id" class="form-label">Id del Usuario</label>
+                    <input type="text" class="form-control" id="usuario_id" name="usuario_id" value="<%- idUsuario %>">
+                </div>
                 <div class="mb-3">
                   <label for="nombre" class="form-label">Nombre del Producto</label>
                   <input type="text" class="form-control" id="nombre" name="nombre">
                 </div>
-				<div class="mb-3">
-                    <label for="categoria" class="form-label">Categoria del Producto</label>
+				<div id="espacio" class="mb-3">
+                    <label id="espacio2" for="categoria" class="form-label">Categoria del Producto</label>
                     <select class="form-select" aria-label="Default select example" name="categoria">
                         <option  selected disabled>Seleccione la categoria</option>
                         <% for(let i = 0 ; i < categorias.length; i++){ %>
@@ -42,7 +46,7 @@
                     <input type="number" class="form-control" id="precio" name="precio">
                 </div>                                   
                 <div>
-                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <button id="remember2" type="submit" class="btn btn-primary">Guardar</button>
                 </div>
               </form>            
         </article>

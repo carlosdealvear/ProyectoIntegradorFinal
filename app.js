@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const db = require("./database/models")
-
+//var searchResultsRouter = require ('./routes/searchResults');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var productRouter = require("./routes/product");
@@ -94,7 +94,7 @@ app.use(function(req, res, next) {
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use("/producto", productRouter);
-
+//app.use ('/search', searchResultsRouter );
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
