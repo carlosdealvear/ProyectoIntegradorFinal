@@ -10,7 +10,7 @@ module.exports = {
 
     producto: (req, res) => {
         let idProducto = req.params.id
-        //return res.send(idProduct)
+        
         db.Producto.findByPk(req.params.id,{
             include: [
                 {association: "categorias"},
@@ -23,7 +23,7 @@ module.exports = {
         })
         
         .then(miProducto =>{
-            //console.log(miProducto+"------")
+           
             return res.render("producto", {miProducto, idProducto});
                         
         })

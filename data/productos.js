@@ -70,18 +70,7 @@ const productos = {
         
         return respuesta        
     },
-    /*porGenero: function (genero) {
-        let respuesta = []
-        for (let i = 0; i < bandas.bandas.length; i++) {
-            if (bandas.bandas[i].genero == genero.toLowerCase()) {
-                respuesta.push(bandas.bandas[i])
-            }
-        }
     
-        return respuesta
-        
-    },
-    }*/
     }    
     
     

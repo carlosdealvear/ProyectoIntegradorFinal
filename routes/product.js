@@ -4,7 +4,7 @@ const productController = require("../controllers/productController")
 
 
 
-/* GET homee page. */
+
 
 
 router.get("/", productController.principal)

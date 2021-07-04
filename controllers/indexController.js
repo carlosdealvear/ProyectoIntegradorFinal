@@ -52,14 +52,17 @@ module.exports = {
                 {association: "productos"},
                 ]                
         })
+        
         .then(usuario =>{
-            //console.log(miProducto+"------")
+          
             return res.render("perfil", {usuario});
         })
         .catch(error => console.log(error+"*****"))
     },
 
     editar: (req, res) => {
+       
+        
         let idUsuario = req.params.id
         db.Usuario.findByPk(idUsuario)
         .then(usuario => {

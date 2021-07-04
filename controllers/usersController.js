@@ -18,9 +18,9 @@ module.exports = {
                 return res.send('Usuario o clave inválida')
             }else{
                 if(bcryptjs.compareSync(req.body.password, usuario.password)){
-                    //guardar el usuario  que se esta logeando
+                  
                     req.session.usuarioLogueado = usuario
-                    //activando el guardado de cookies osea el recuerdame
+                    
                     if (req.body.recordarme) {
                         res.cookie('userId',usuario.Id, {maxAge : 1000 * 60 *60*24 })
                     }
